@@ -30,9 +30,10 @@ const gameContainer = document.querySelector("#gameContainer");
 gameContainer.style.display = "flex";
 gameContainer.style.flexDirection = "column";
 gameContainer.style.alignItems = "center";
+gameContainer.style.border = "solid black 1px";
 
-let maxWidth = 600; //pixels
-let maxHeight = 600; //pixels
+let maxWidth = 700; //pixels
+let maxHeight = 700; //pixels
 
 function makeGrid(inputRows) {
     while (gameContainer.hasChildNodes()){
@@ -48,13 +49,14 @@ function makeGrid(inputRows) {
             square.classList.add("square");
             square.style.minHeight = maxHeight/inputRows + "px";
             square.style.minWidth = maxWidth/inputRows + "px";
-            square.style.border = "solid black 2px"
             square.addEventListener("mouseover", () => {
                 square.style.backgroundColor = "pink";
             })
             row.appendChild(square);
         }
     }
+    document.querySelector("#sizeText").textContent = "Size: " + inputRows +
+    " x " + inputRows; 
 }
 let gridSize = 4; // Initial size
 makeGrid(gridSize);

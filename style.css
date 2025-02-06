@@ -4,8 +4,14 @@ body {
     text-align: center;
     justify-content: center;
     /* flex: 1 1 0; */
+    margin: 0 40px;
 }
 
 h1 {
     text-align: center;
+}
+
+.contentTop {
+    display: flex;
+    gap: 50px;
 }
