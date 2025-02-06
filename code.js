@@ -1,12 +1,10 @@
-const button = document.querySelector("#btnSize");
-const container = document.querySelector(".content");
-
 function getSize() {
     let input = prompt("Enter a number (1-100) for number of squares in a" +
         " row/column:");
-    if ((input < 0 )||(input > 100)) {
-        alert("Number outside of range")
-        return "ERROR";
+    if ((input < 1 )||(input > 100)) {
+        alert("Number outside of range, defaulting to 5.")
+        input = 5;
+        return input;
     } else {
         return input;
     }
@@ -51,20 +49,23 @@ function getRand255() {
     return randColor;
 }
 
-function changeColor() {
-}
+let maxWidth = 700; //pixels
+let maxHeight = 700; //pixels
+
+const button = document.querySelector("#btnSize");
+const container = document.querySelector(".content");
 
 container.style.display = "flex";
 container.style.flexDirection = "column";
 container.style.gap = "10px";
 container.style.alignItems = "center";
-button.style.width = "100px";
 
+document.querySelector(".instructions").style.width = maxWidth + "px";
+
+button.style.width = "100px";
 button.addEventListener("click", () => {
     gridSize = getSize();
-    if (gridSize !== "ERROR") {
-        makeGrid(gridSize);
-    }
+    makeGrid(gridSize);
 })
 
 const gameContainer = document.querySelector("#gameContainer");
@@ -74,9 +75,6 @@ gameContainer.style.flexDirection = "column";
 gameContainer.style.alignItems = "center";
 gameContainer.style.border = "solid black 1px";
 
-let maxWidth = 700; //pixels
-let maxHeight = 700; //pixels
+let gridSize = 5; // Initial size
 
-
-let gridSize = 4; // Initial size
 makeGrid(gridSize);
