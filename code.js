@@ -12,6 +12,40 @@ function getSize() {
     }
 }
 
+function makeGrid(inputRows) {
+    while (gameContainer.hasChildNodes()){
+        gameContainer.removeChild(gameContainer.firstChild);
+    }    
+    for (let i = 0; i < inputRows; i++) {
+        let row = document.createElement("div");
+        row.classList.add("row");
+        row.style.display = "flex";
+        gameContainer.appendChild(row);
+        for (let j = 0; j < inputRows; j++) {
+            let square = document.createElement("div");
+            square.classList.add("square");
+            square.style.minHeight = maxHeight/inputRows + "px";
+            square.style.minWidth = maxWidth/inputRows + "px";
+            square.addEventListener("mouseover", () => {
+                square.style.background = "rgb(" + getRand255() + "," +
+                getRand255() + "," + getRand255() + ")";
+                console.log(square.style.backgroundColor);
+            })
+            row.appendChild(square);
+        }
+    }
+    document.querySelector("#sizeText").textContent = "Size: " + inputRows +
+    " x " + inputRows; 
+}
+
+function getRand255() {
+    let randColor = 255 * Math.random();
+    return randColor;
+}
+
+function changeColor() {
+}
+
 container.style.display = "flex";
 container.style.flexDirection = "column";
 container.style.gap = "10px";
@@ -35,28 +69,6 @@ gameContainer.style.border = "solid black 1px";
 let maxWidth = 700; //pixels
 let maxHeight = 700; //pixels
 
-function makeGrid(inputRows) {
-    while (gameContainer.hasChildNodes()){
-        gameContainer.removeChild(gameContainer.firstChild);
-    }    
-    for (let i = 0; i < inputRows; i++) {
-        let row = document.createElement("div");
-        row.classList.add("row");
-        row.style.display = "flex";
-        gameContainer.appendChild(row);
-        for (let j = 0; j < inputRows; j++) {
-            let square = document.createElement("div");
-            square.classList.add("square");
-            square.style.minHeight = maxHeight/inputRows + "px";
-            square.style.minWidth = maxWidth/inputRows + "px";
-            square.addEventListener("mouseover", () => {
-                square.style.backgroundColor = "pink";
-            })
-            row.appendChild(square);
-        }
-    }
-    document.querySelector("#sizeText").textContent = "Size: " + inputRows +
-    " x " + inputRows; 
-}
+
 let gridSize = 4; // Initial size
 makeGrid(gridSize);
