@@ -5,6 +5,7 @@ body {
     justify-content: center;
     /* flex: 1 1 0; */
     margin: 0 40px;
+    background-color: rgb(114,110,194);
 }
 
 h1 {
@@ -14,4 +15,8 @@ h1 {
 .contentTop {
     display: flex;
     gap: 50px;
+}
+
+#gameContainer {
+    background-color: white;
 }
