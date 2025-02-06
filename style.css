@@ -3,6 +3,7 @@ body {
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    /* flex: 1 1 0; */
 }
 
 h1 {

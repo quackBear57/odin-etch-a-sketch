@@ -24,21 +24,40 @@ const row2 = document.createElement("div");
 const row3 = document.createElement("div");
 const row4 = document.createElement("div");
 
-// div11.setAttribute("id","div11");
+div11.setAttribute("class","square");
+div12.setAttribute("class","square");
+div13.setAttribute("class","square");
+div14.setAttribute("class","square");
+div21.setAttribute("class","square");
+div22.setAttribute("class","square");
+div23.setAttribute("class","square");
+div24.setAttribute("class","square");
+div31.setAttribute("class","square");
+div32.setAttribute("class","square");
+div33.setAttribute("class","square");
+div34.setAttribute("class","square");
+div41.setAttribute("class","square");
+div42.setAttribute("class","square");
+div43.setAttribute("class","square");
+div44.setAttribute("class","square");
 
-row1.classList.add("row1");
-row2.classList.add("row2");
-row3.classList.add("row3");
-row4.classList.add("row4");
+row1.classList.add("row");
+row2.classList.add("row");
+row3.classList.add("row");
+row4.classList.add("row");
 
 gameContainer.appendChild(row1);
 gameContainer.appendChild(row2);
 gameContainer.appendChild(row3);
 gameContainer.appendChild(row4);
 
+gameContainer.style.display = "flex";
+gameContainer.style.flexDirection = "column";
+gameContainer.style.alignItems = "center";
+
 let descendents = gameContainer.getElementsByTagName("*");
 for (let i = 0; i < descendents.length; i++) {
-    descendents[i].setAttribute("display", "flex");
+    descendents[i].style.display = "flex"; 
 }
 
 row1.appendChild(div11);
@@ -60,3 +79,14 @@ row4.appendChild(div41);
 row4.appendChild(div42);
 row4.appendChild(div43);
 row4.appendChild(div44);
+
+const squares = document.querySelectorAll(".square");
+squares.forEach((div) => {
+    div.style.minHeight = "100px";
+    div.style.minWidth = "100px";
+    div.style.border = "solid black 2px"
+    // div.textContent = "square";
+    div.addEventListener("mouseover", () => {
+        div.style.backgroundColor = "pink";
+    })
+});
