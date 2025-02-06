@@ -27,9 +27,17 @@ function makeGrid(inputRows) {
             square.style.minHeight = maxHeight/inputRows + "px";
             square.style.minWidth = maxWidth/inputRows + "px";
             square.addEventListener("mouseover", () => {
-                square.style.background = "rgb(" + getRand255() + "," +
+                if (square.style.backgroundColor === ""){
+                    square.style.backgroundColor = "rgb(" + getRand255() + "," +
                 getRand255() + "," + getRand255() + ")";
-                console.log(square.style.backgroundColor);
+                square.style.opacity = "0.1";
+                } else {
+                    let currentOpacity = 0;
+                    currentOpacity = parseFloat(square.style.opacity);
+                    if (currentOpacity != 1.0) {
+                        square.style.opacity = currentOpacity + 0.1;
+                    }
+                }
             })
             row.appendChild(square);
         }
